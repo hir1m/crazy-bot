@@ -1,0 +1,35 @@
+# TypeScript cache
+*.tsbuildinfo
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build output
+dist/
+build/
+out/
+
+# Dependency directories
+node_modules/
+
+# System Caches
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+thumbs.db
+._thumbs.db
+**/thumbs.db
+**/._thumbs.db
+
+# Config files
+config.json
