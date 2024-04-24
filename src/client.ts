@@ -14,8 +14,10 @@ client.on("messageCreate", async (message) => {
     .toLowerCase()
     .split(" ");
 
-  // check if the message contains the word "crazy", if so, @Ethan
-  if (words.includes("crazy")) {
+  const crazyWords = ["crazy", "craziest", "crazier"];
+  const hasCrazy = words.some((word) => crazyWords.includes(word));
+
+  if (hasCrazy && !message.author.bot) {
     message.reply(`<@${config.CRAZY_ID}>`);
   }
 });
