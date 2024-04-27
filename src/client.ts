@@ -10,7 +10,7 @@ client.on("messageCreate", async (message) => {
 
   // removes punctuation, make message lowercase and split it into words
   const words = content
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+    .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "")
     .toLowerCase()
     .split(" ");
 
