@@ -14,7 +14,6 @@ client.on("messageCreate", async (message) => {
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
       .toLowerCase()
       .split(" ");
-    console.log('hi');
     const crazyWords = ["crazy", "craziest", "crazier"];
     const gnjackson = ["goodnight jackson", "gn jackson"];
     const hasCrazy = words.some((word) => crazyWords.includes(word));
