@@ -20,9 +20,7 @@ client.on("messageCreate", async (message) => {
     }
 
     // removes punctuation, make message lowercase and split it into words
-    const words = content
-      .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
-      .toLowerCase()
+    const words = phrases
       .split(" ");
     const crazyWords = ["crazy", "craziest", "crazier"];
     const hasCrazy = words.some((word) => crazyWords.includes(word));
@@ -30,7 +28,6 @@ client.on("messageCreate", async (message) => {
     if (hasCrazy && !message.author.bot) {
       message.reply(`<@${config.CRAZY_ID}>`);
     }
-
   } catch (error) {
     console.log(error);
   }
