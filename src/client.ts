@@ -9,12 +9,19 @@ client.on("messageCreate", async (message) => {
   try {
     const { content } = await message.fetch();
 
-    // removes punctuation, make message lowercase and split it into words
-    const words = content
+    const phrases = content
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
-      .toLowerCase()
-      .split(" ");
+      .toLowerCase();
+    const gnjacksonPhrases = ["goodnight jackson","gn jackson","good night jackson"];
+    const hasJackson = gnjacksonPhrases.some(phrase => phrases.includes(phrase));
 
+    if (hasJackson && !message.author.bot){
+      message.reply(`goodnight jackson`);
+    }
+
+    // removes punctuation, make message lowercase and split it into words
+    const words = phrases
+      .split(" ");
     const crazyWords = ["crazy", "craziest", "crazier"];
     const hasCrazy = words.some((word) => crazyWords.includes(word));
 
