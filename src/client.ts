@@ -8,11 +8,17 @@ const client = new Client({
 client.on("messageCreate", async (message) => {
   try {
     const { content } = await message.fetch();
-    const gnjackson = ["goodnight jackson","gn jackson","good night jackson"];
-    const allgnjacksons = content
+
+    const phrases = content
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
-      .toLowerCase()
-    const hasJackson = gnjackson.some(phrase => allgnjacksons.includes(phrase));
+      .toLowerCase();
+    const gnjacksonPhrases = ["goodnight jackson","gn jackson","good night jackson"];
+    const hasJackson = gnjacksonPhrases.some(phrase => phrases.includes(phrase));
+
+    if (hasJackson && !message.author.bot){
+      message.reply(`goodnight jackson`);
+    }
+
     // removes punctuation, make message lowercase and split it into words
     const words = content
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
@@ -24,9 +30,7 @@ client.on("messageCreate", async (message) => {
     if (hasCrazy && !message.author.bot) {
       message.reply(`<@${config.CRAZY_ID}>`);
     }
-    if (hasJackson && !message.author.bot){
-      message.reply(`goodnight jackson`);
-    }
+
   } catch (error) {
     console.log(error);
   }
