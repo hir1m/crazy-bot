@@ -8,16 +8,18 @@ const client = new Client({
 client.on("messageCreate", async (message) => {
   try {
     const { content } = await message.fetch();
-
+    const gnjackson = ["goodnight jackson","gn jackson","good night jackson"];
+    const allgnjacksons = content
+      .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
+      .toLowerCase()
+    const hasJackson = gnjackson.some(phrase => allgnjacksons.includes(phrase));
     // removes punctuation, make message lowercase and split it into words
     const words = content
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
       .toLowerCase()
       .split(" ");
     const crazyWords = ["crazy", "craziest", "crazier"];
-    const gnjackson = ["good night jackson", "gn jackson", "goodnight jackson"];
     const hasCrazy = words.some((word) => crazyWords.includes(word));
-    const hasJackson = words.some((word) => gnjackson.includes(word));
 
     if (hasCrazy && !message.author.bot) {
       message.reply(`<@${config.CRAZY_ID}>`);
