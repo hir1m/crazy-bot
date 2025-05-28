@@ -14,17 +14,17 @@ client.on("messageCreate", async (message) => {
       .replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()…]/g, "")
       .toLowerCase()
       .split(" ");
-
+    console.log('hi');
     const crazyWords = ["crazy", "craziest", "crazier"];
-    const gnjackson = ["goodnight jackson", "gn jackson"]
+    const gnjackson = ["goodnight jackson", "gn jackson"];
     const hasCrazy = words.some((word) => crazyWords.includes(word));
-    const hasJackson = words.some((word) => gnjackson.includes(word))
+    const hasJackson = words.some((word) => gnjackson.includes(word));
 
     if (hasCrazy && !message.author.bot) {
       message.reply(`<@${config.CRAZY_ID}>`);
     }
     if (hasJackson && !message.author.bot){
-      message.reply(`goodnight jackson`)
+      message.reply(`goodnight jackson`);
     }
   } catch (error) {
     console.log(error);
